@@ -39,7 +39,7 @@ public class SLApplication {
         Scanner scanner= new Scanner(System.in);
         while (!queue.isEmpty()) {
             Player player = queue.poll();
-            Thread.sleep(2000);
+            Thread.sleep(3000);
             int num = random.ints(1, 7).findFirst().getAsInt();
             int cp = player.getPosition();
             int fp = cp + num;
@@ -49,12 +49,12 @@ public class SLApplication {
                 Board cb = game.getBoard().get(fp-1);
                 SpecialEntity specialEntity = map.get(fp);
                 fp = map.get(fp).getEnd();
-                System.out.println(" "+player + " hit by" + cb.getSpecialEntityType() + " " + specialEntity +" now final pos "+fp);
+                System.out.println(" "+player + " hit by " + cb.getSpecialEntityType() + " " + specialEntity +" now final pos "+fp+" ");
 
             }
             System.out.printf("  moving player from %d to %d \n",player.getPosition(),fp);
            if (fp>=game.getBoard().size()){
-               System.out.println("HURREY "+player+" won the match");
+               System.out.println(" HURREY "+player+" won the match ");
                break;
            }
             player.setPosition(fp);
