@@ -2,10 +2,9 @@ package model;
 
 import lombok.Getter;
 
-import java.time.LocalDateTime;
 
 @Getter
-public class JsonMessage extends Message {
+public class JsonMessage extends lld.ImMemQueue.src.main.java.model.Message {
     private final String message;
 
     public JsonMessage(String message) {

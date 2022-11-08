@@ -1,4 +1,4 @@
-package model;
+package lld.ImMemQueue.src.main.java.model;
 
 import lombok.Getter;
 

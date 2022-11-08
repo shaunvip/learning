@@ -2,7 +2,6 @@ package service.topic;
 
 import lombok.NonNull;
 import model.JsonMessage;
-import model.Message;
 import model.Topic;
 import model.TopicSubscriber;
 
