@@ -1,1 +1,4 @@
-/.idea/
+/.idea/*
+out/*
+/src/lld/ImMemQueue/target/*
+/src/lld/ImMemQueue/out/*
