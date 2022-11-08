@@ -1,0 +1,47 @@
+type RUser {
+    id: Int!
+    name: String!
+    userType: UserType!
+}
+type Driver {
+    id: Int!
+    name: String!
+    userType: UserType!
+    available:Boolean
+    createdOn:String
+}
+type Cab {
+    id: Int!
+    name: String!
+    model: String!
+    userType: CabStatus
+    location:Location
+    owner:Driver
+}
+type Location{
+    id:Int!
+    name:String!
+    country:String!
+    lat:String!
+    lng:String!
+}
+type Mutation{
+    updateUser(id:ID! ,name:String,userType:UserType) :RUser
+    updateCabStatus(id:ID!,name:String,model:String,cabStatus:CabStatus) :Cab
+
+}
+
+ type Query {
+    userById(id: ID): RUser
+    users : [RUser]
+    cabs:[Cab]
+}
+
+
+
+enum UserType {
+    DRIVER,USER
+}
+enum CabStatus{
+    AVAILABLE,RIDING,NOT_AVAILABLE
+}
