@@ -1,6 +1,8 @@
 package lld.rentalCar.entity;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Store extends BaseEntity{
     private String name;
@@ -12,7 +14,7 @@ public class Store extends BaseEntity{
     }
 
     public List<Vehicle> getVehicleList() {
-        return vehicleList;
+        return Optional.ofNullable(vehicleList).orElse(new ArrayList<>());
     }
 
     public Address getAddress() {

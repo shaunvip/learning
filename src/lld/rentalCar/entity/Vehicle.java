@@ -33,6 +33,16 @@ public class Vehicle extends BaseEntity{
     public Store getStore() {
         return store;
     }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "name='" + name + '\'' +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                ", type=" + type +
+                '}';
+    }
 }
 enum VehicleType {
     CAR,BIKE,TRUCK

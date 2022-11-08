@@ -14,7 +14,7 @@ public class InventoryService {
     static Map<Integer, List<Store>> zipCodeWiseStore = new HashMap<>();
 
     public static void fillBasicData() {
-        Address address = new Address("GURGOAN", "HR", 122008, "1A");
+        Address address = new Address("GURGOAN", "HR", 122008, "8A");
         Vehicle vehicle = new Vehicle("TIYAGO", "TATA", 2019);
         Vehicle vehicle2 = new Vehicle("I10", "HYUNDAI", 2019);
         Vehicle vehicle3 = new Vehicle("ALTO", "MARUTI", 2020);
@@ -55,7 +55,7 @@ public class InventoryService {
         }};
 
         Store s4 = new Store("STORE4", s4VL, store4Address);
-        Address s3Address = new Address("GURGOAN", "HR", 122005, "1A");
+        Address s3Address = new Address("GURGOAN", "HR", 122004, "1A");
         Vehicle s3V1 = new Vehicle("TIYAGO-3", "TATA", 2019);
         Vehicle s3V2 = new Vehicle("I10-3", "HYUNDAI", 2019);
         Vehicle s3V3 = new Vehicle("ALTO-3", "MARUTI", 2020);
@@ -67,11 +67,20 @@ public class InventoryService {
             add(s3V2);
         }};
 
-        Store s3 = new Store("STORE3", s3VehicleList, s3Address);
+        Store s5 = new Store("STORE5", s4VL, store4Address);
+        Address s5Address = new Address("GURGOAN", "HR", 122005, "5A");
+
+
+
+        Store s3 = new Store("STORE5", null, s5Address);
+
         stores.add(s1);
         stores.add(s2);
         stores.add(s3);
-        createCache(s2, s1, s3, s4);
+        stores.add(s4);
+        stores.add(s5);
+
+        createCache(s2, s1, s3, s4,s5);
 
     }
 
