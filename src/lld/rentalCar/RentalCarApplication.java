@@ -21,12 +21,12 @@ public class RentalCarApplication {
       System.out.printf("Cars at zip %d \n",zipCode);
       List<Store> stores= InventoryService.zipCodeWiseStore.get(zipCode);
       if (stores==null || stores.isEmpty()){
-          System.err.println("NO VEHICLES AVAILABE "+zipCode);
+          System.err.println("NO VEHICLES AVAILABLE "+zipCode);
           return;
       }
      List<Vehicle> vehicleList=stores.stream().flatMap(s->s.getVehicleList().stream()).collect(Collectors.toList());
       if (vehicleList.isEmpty()) {
-          System.err.println("NO VEHICLES AVAILABE "+zipCode);
+          System.err.println("NO VEHICLES AVAILABLE "+zipCode);
           return;
       }
       vehicleList.forEach(System.out::println);
