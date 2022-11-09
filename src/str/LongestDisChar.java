@@ -1,28 +1,45 @@
 package str;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 public class LongestDisChar {
     public static void main(String[] args) {
-        longestString("qwertyuioplkjh");
         longestString("okmnijnhbtgv");
+        longestString("abcbbcab");
+        longestStringOptimized("abcbbcab");
+        longestString("qwertyuioplkjh");
+        longestStringOptimized("qwertyuioplkjh");
+        longestStringOptimized(new int[]{1, 1, 0, 1, 1, 1, 0, 0, 1});
         System.out.println();
         System.out.println(15>>2);
         System.out.println(29>>3);
         System.out.println(29<<3);
-        // 1 1 1 1 0
-        //
         System.out.println();
         lenOfLongSubarr(new int[]{-3,-16,-17,-1,-2,8,-4,9,-17,18,16,-6,-17,-8,15,0,11,2,15},19,11);
-      //  lenOfLongSubarr(new int[]{-14,10, -15, 17, 4, 18, 3, -18, -7, -4, -8, 8,-8},13,12);
-        // lenOfLongSubarr(new int[]{10, 5, 2, 7, 1, 9},6,15);
-        //  lenOfLongSubarr(new int[]{17},1,17);
+
 
 
     }
 
-    public static int lenOfLongSubarr (int A[], int N, int K) {
+    private static void longestStringOptimized(int[] ints) {
+        int len=0;
+        int start =0;
+        System.out.print("Find Maximum Consecutive 1s in an Array:"+ Arrays.toString(ints));
+        for (int anInt : ints) {
+            if (anInt == 0) {
+                start = 0;
+            } else {
+                start += 1;
+                len = Math.max(start, len);
+            }
+
+        }
+        System.out.println(len);
+    }
+
+    public static int lenOfLongSubarr (int[] A, int N, int K) {
         int maxLen=0;
         for (int i = 0; i < N; i++) {
             int sum=A[i];
@@ -42,6 +59,24 @@ public class LongestDisChar {
         }
         System.out.println("OUT"+maxLen);
         return maxLen;
+    }
+    private static void longestStringOptimized(String str) {
+        Set<Character> visited= new HashSet<>();
+        int maxlen=0;
+        int i=0,j=0;
+        int n=str.length();
+        while (i<n && j<n){
+            Character ch=str.charAt(j);
+            if (!visited.contains(ch)){
+                visited.add(ch);
+                j=j+1;
+                maxlen=Math.max(maxlen,j-i);
+            }else {
+                visited.remove(ch);
+                i=i+1;
+            }
+        }
+        System.out.println(str+"  "+maxlen);
     }
     private static void longestString(String str) {
         Set<Character> visited= new HashSet<>();
@@ -65,7 +100,7 @@ public class LongestDisChar {
         }
         if(maxlen==0)
             maxlen= str.length();
-        System.out.println(maxlen);
+        System.out.println(str+" >> "+maxlen);
        // System.out.println(list);
     }
 }
