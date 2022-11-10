@@ -26,6 +26,10 @@ public class Board {
         }
     }
 
+    public Cell[][] getCells() {
+        return cells;
+    }
+
     public void print(){
         for (Cell[] cell : cells) {
             for (Cell value : cell) {

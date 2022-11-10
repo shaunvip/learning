@@ -23,7 +23,7 @@ public class Minesweeper {
             System.out.println("Please enter cell number to move");
             int val=scanner.nextInt();
             // validate bound
-           int re=  game.move(val);
+           int re= game.move(val);
            if (re>=1){
                totalPoints+=re;
            } else if (re==-1) {

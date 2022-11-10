@@ -7,17 +7,15 @@ import java.util.UUID;
 
 public class Game {
     private final UUID id;
-    private Board board;
+    private final Board board;
     private Set<Player> players;
 
     public Game(int size) {
         this.id = UUID.randomUUID();
-        this.initiateBoard(size);
-
-
+      this.board=  this.initiateBoard(size);
     }
 
-    private void initiateBoard(int size) {
+    private Board initiateBoard(int size) {
         int bomb=10;
         switch (size){
             case 1:
@@ -36,15 +34,12 @@ public class Game {
                 System.out.println("Invalid value , Play a beginner Game ");
         }
         Board board= new Board(size);
+
         board.addBomb(bomb,size);
         board.addPoints(bomb*3,size);
         board.print();
+        return board;
     }
-
-    private void addCells() {
-
-    }
-
     public Board getBoard() {
         return board;
     }
@@ -55,6 +50,7 @@ public class Game {
     }
 
     public int move(int val) {
+
         return 0;
     }
 }
