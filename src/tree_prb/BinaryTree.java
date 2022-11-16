@@ -4,8 +4,8 @@ import java.util.*;
 
 public class BinaryTree {
         TreeNode root;
-        private static BinaryTree getBinaryTree() {
-                BinaryTree tree_level = new BinaryTree();
+        public static BinaryTree getBinaryTree() {
+                BinaryTree tree_level= new BinaryTree();
                 tree_level.root = new TreeNode(1);
                 tree_level.root.left = new TreeNode(13);
                 tree_level.root.right = new TreeNode(3);
@@ -15,11 +15,6 @@ public class BinaryTree {
                 tree_level.root.right.left.right = new TreeNode(5);
                 return tree_level;
         }
-
-        //              1
-        //          13      3
-        //                2    23
-        //              4  5
         public static void main(String[] args) {
                 BinaryTree tree_level = getBinaryTree();
                 System.out.println("LEVEL ORDEr");
@@ -44,6 +39,7 @@ public class BinaryTree {
                 System.out.println("LEVEL ORDEr");
                 tree_level.printLevelOrder();
                 System.out.println("Mirror element is "+tree_level.mirror(TreeNode.getTreeType2()));
+                System.out.println("\n Max Product of Tree"+tree_level.maximumProductOfSplittedBinaryTree(TreeNode.getBinary2()));
 
         }
 
@@ -276,6 +272,39 @@ public class BinaryTree {
                 p1.remove(p1.size() - 1);
                 return false;
 
+        }
+
+        /**
+         * https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/discuss/1349034/JAVA-or-8-ms-or-Simple-DFS
+         Given the root of a binary tree, split the binary tree into two subtrees by removing one edge such that the product of the sums of the subtrees is maximized.
+         Return the maximum product of the sums of the two subtrees. Since the answer may be too large, return it modulo 109 + 7.
+         Note that you need to maximize the answer before taking the mod and not after taking it.
+         */
+        private int maximumProductOfSplittedBinaryTree(TreeNode root){
+                int sum=getSum(root);
+                System.out.println("Sum is "+sum);
+                getMaxSum(root,sum);
+                return max % (int)(Math.pow(10, 9) + 7);
+        }
+
+        private int getMaxSum(TreeNode root, int sum) {
+                if(root == null) return 0;
+
+                int left = getMaxSum(root.left, sum);
+                System.out.println("got last left"+left);
+                int right = getMaxSum(root.right, sum);
+                System.out.println("got last left"+left);
+
+                int curr = left + right + root.val;
+                max = Math.max(max, curr * (sum - curr));
+                return curr;
+        }
+
+        private int getSum(TreeNode root) {
+                if (root==null){
+                        return 0;
+                }
+                return root.val+getSum(root.left)+getSum(root.right);
         }
 }
 

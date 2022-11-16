@@ -67,4 +67,22 @@ public class TreeNode {
         //      1    4   5   4
     }
 
+
+
+    public static TreeNode getBinary2() {
+
+        TreeNode   tree_level = new TreeNode(1);
+        tree_level.left = new TreeNode(2);
+        tree_level.right = new TreeNode(3);
+        tree_level.left.left = new TreeNode(4);
+        tree_level.left.right = new TreeNode(5);
+        tree_level.right.left = new TreeNode(6);
+        return tree_level;
+    }
+    //              1
+    //          13      3
+    //                2    23
+    //              4  5
+
+
 }
