@@ -4,7 +4,7 @@ import lombok.Getter;
 
 
 @Getter
-public class JsonMessage extends lld.ImMemQueue.src.main.java.model.Message {
+public class JsonMessage extends Message {
     private final String message;
 
     public JsonMessage(String message) {

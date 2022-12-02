@@ -3,8 +3,8 @@ package bit_manipulation;
 public class Bit {
     // https://medium.com/techie-delight/bit-manipulation-interview-questions-and-practice-problems-27c0e71412e7
     public static void main(String[] args){
-        System.out.println(nof("viipul"));
-        System.out.println(nof("sssssdddddd"));
+        System.out.println(mostNumberOfFrequentCharacter("viipul"));
+        System.out.println(mostNumberOfFrequentCharacter("sssssdddddd"));
         removeDuplicates(new int[]{1,1,1,2,6,6});
         evenOddNumber(4);
         evenOddNumber(41);
@@ -21,9 +21,9 @@ public class Bit {
         System.out.println("Number is "+ (i&1));
     }
 
-    static int nof(String str){
+    static int mostNumberOfFrequentCharacter(String str){
         char[] chars= str.toCharArray();
-            int[] freq=new int[26];
+        int[] freq=new int[26];
         int result=0;
             for (int i = 0; i < str.length(); i++) {
                 char ch=chars[i];

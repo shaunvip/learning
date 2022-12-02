@@ -1,4 +1,4 @@
-package DP;
+package arr;
 
 public class MatrixTraversal {
     public static void main(String[] args) {
@@ -18,18 +18,22 @@ public class MatrixTraversal {
                 System.out.print(matrix[rowStart][i]+" ");
             }
             rowStart++;
+            System.out.println();
             for (int i = rowStart; i <= colLast; i++) {
                 System.out.print(matrix[i][rowEnds]+" ");
             }
             rowEnds--;
+            System.out.println();
             for (int i = rowEnds; i >= colStart; i--) {
                 System.out.print(matrix[colLast][i]+" ");
             }
             colLast--;
+            System.out.println();
             for (int i =colLast ; i >= rowStart; i--) {
                 System.out.print(" "+matrix[i][colStart]);
             }
             colStart++;
+            System.out.println();
 
         }
     }

@@ -19,7 +19,12 @@ public class ChessProblem {
                 {0,0,0,0,0,0,0,0}};
         int kR=4;
         int kC=5;
-        chessProblem.moveKnight(grid,kR,kC,6,7);
+        System.out.println(chessProblem.moveKnight(grid,kR,kC,6,7));
+        kR=kC=1;
+        System.out.println(" from 7 1 ======= 1 7");
+        System.out.println(chessProblem.minSteps(7,1,1,7));
+
+        System.out.println(chessProblem.minSteps(kR,kC,6,7));
 
     }
    class  Pair{
@@ -45,7 +50,6 @@ public class ChessProblem {
                 for (int i = 0; i < moveR.length; i++) {
                     int fR = temp.r + moveR[i];
                     int fC = temp.c + moveC[i];
-
                     if (fR <= 0 || fC <= 0 || fR >= grid.length || fC >= grid[0].length || grid[fR][fC] != 0) {
                         continue;
                     }
@@ -61,4 +65,45 @@ public class ChessProblem {
 
         return 0;
     }
+    //Minimum number of moves required to reach the destination by the king in a chess board
+     int minSteps(int sR, int sC, int dR, int dC) {
+        if (sR==dR && sC==dC){
+            return 1;
+        }
+        if(dR>sR && dC>sC){ // both values are bigger we need to move down
+            System.out.println (" DR+1 DR ");
+            minSteps(sR+1,sC+1,dR,dC);
+        }
+        else if(dR<sR && dC<sC){ // both values are smaller we need to move up
+            System.out.println (" UL -1 ");
+            minSteps(sR-1,sC-1,dR,dC);
+        }
+         if(dR<sR && dC<sC){ // both values are bigger we need to move down
+             System.out.println (" DL ");
+             minSteps(sR+1,sC-1,dR,dC);
+         }
+         else if(dR<sR && dC>sC){ // both values are smaller we need to move up
+             System.out.println (" UR -1 ");
+             minSteps(sR-1,sC+1,dR,dC);
+         }
+        else if (dR>sR && dC==sC) {
+            System.out.println (" D ");
+            minSteps(sR+1,sC,dR,dC);
+        } else if (dR==sR && dC>sC) {
+            System.out.println (" C+1 R ");
+            minSteps(sR,sC+1,dR,dC);
+        }
+         else if (dR<sR && dC==sC) {
+            System.out.println (" R - 1 ");
+            minSteps(sR-1,sC,dR,dC);
+         } else if (dR==sR && dC<sC) {
+            System.out.println (" C -1 ");
+            minSteps(sR,sC-1,dR,dC);
+         }
+             else {
+            System.out.println("Figure out");
+        }
+         return 0;
+    }
+
 }
