@@ -46,21 +46,26 @@ public class Pair {
 class Triplet {
 
     public void triplets(int[] arr, int sum) {
+        Arrays.sort(arr);
         System.out.println(" \nTriplets " + Arrays.toString(arr) + " " + sum);
-        Set<Integer> set = new HashSet<>();
-        for (int i = 0; i < arr.length; i++) {
+        int size=arr.length;
+        for (int i = 0; i < size-2; i++) {
             int c = arr[i];
-            int tempSum=sum;
-                tempSum-=c;
-            for (int j = i + 1; j < arr.length; j++) {
-               int num2=arr[j];
-                int temp = tempSum - num2;
-                if (set.contains(temp)) {
-                    System.out.printf("CAN BE FOUND %d  %d", c, temp);
+            int low=i+1;
+            int high= size-1;
+            while (low<high){
+                int cs=c+arr[low]+arr[high];
+                if (cs==sum){
+                    System.out.print(c+" "+arr[low]+" "+arr[high]+"\n");
+                    high--;
+                    low++;
+                }else if(cs>sum){
+                    high--;
+                }else {
+                    low++;
                 }
-                set.add(num2);
             }
-            set.add(c);
+
         }
     }
 }
